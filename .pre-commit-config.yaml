@@ -1,0 +1,51 @@
+fail_fast: false
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit, manual]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-byte-order-marker
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: typos
+        name: typos
+        description: Check for common misspellings.
+        entry: typos
+        language: system
+        files: \.*$
+        pass_filenames: false
+
+      - id: ruff-format
+        name: ruff format
+        description: Format Python files with ruff.
+        entry: ruff format
+        language: system
+        types: [python]
+        pass_filenames: true
+
+      - id: ruff-check
+        name: ruff check
+        description: Lint Python files with ruff.
+        entry: ruff check --fix
+        language: system
+        types: [python]
+        pass_filenames: true
+
+      - id: pytest
+        name: pytest
+        description: Run Python tests.
+        entry: bash -c '.dev-venv/bin/pytest; r=$?; [ $r -eq 5 ] && exit 0 || exit $r'
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true

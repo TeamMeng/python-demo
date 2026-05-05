@@ -1,0 +1,2 @@
+### get greet
+GET http://localhost:8000/greet/Meng?age=24
