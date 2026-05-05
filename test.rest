@@ -1,2 +1,19 @@
 ### get greet
-GET http://localhost:8000/greet/Meng?age=24
+GET http://localhost:8000/greet?name=Meng&age=24
+
+### get greet default
+GET http://localhost:8000/greet
+
+### post create book
+POST http://localhost:8000/create_book
+Content-Type: application/json
+
+{
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald"
+}
+
+### get headers
+GET http://localhost:8000/get_headers
+Content-Type: application/json
+Accept: */*
