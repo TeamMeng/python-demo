@@ -1,5 +1,6 @@
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama
+from langchain_core.output_parsers import StrOutputParser
 
 model = ChatOllama(model="qwen2.5:7b")
 
@@ -8,5 +9,12 @@ messages = [
     HumanMessage(content="My name is xiaoming"),
 ]
 
-result = model.invoke(messages)
-print(result)
+# result = model.invoke(messages)
+# print(result)
+#
+parser = StrOutputParser()
+# print(parser.invoke(result))
+
+# 执行链
+chain = model | parser
+print(chain.invoke(messages))
