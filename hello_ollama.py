@@ -16,5 +16,7 @@ parser = StrOutputParser()
 # print(parser.invoke(result))
 
 # 执行链
-chain = model | parser
+# chain = model | parser
+# chain = RunnableSequence(first=model, last=parser)
+chain = model.pipe(parser)
 print(chain.invoke(messages))
