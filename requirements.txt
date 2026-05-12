@@ -35,7 +35,7 @@ ormsgpack==1.12.2
 packaging==26.1
 pre-commit==4.6.0
 pydantic==2.13.3
-pydantic_core==2.46.3
+pydantic_core==2.46.4
 pydantic-extra-types==2.11.1
 pydantic-settings==2.14.0
 Pygments==2.20.0
